@@ -1,3 +1,5 @@
+echo -e "machine github.com\n  login ci-user\n  password $CI_USER_PASSWORD" >> ~/.netrc
+
 eval "$(gimme 1.5.1)"
 
 export GOPATH=$HOME/gopath

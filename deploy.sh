@@ -1,5 +1,5 @@
 git clone https://${GH_TOKEN}@github.com/decentral-exchange/wallet
-cp -R bitshares-2-ui/dist/* wallet/
+cp -R bitshares-2-ui/web/dist/* wallet/
 cd wallet
 git config user.email "info@decentral.exchange"
 git config user.name "Decentral Exchange"

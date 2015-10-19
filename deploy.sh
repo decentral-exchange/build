@@ -1,3 +1,8 @@
+export GOPATH=$HOME/gopath
+export PATH=$HOME/gopath/bin:$PATH
+
+################################################
+
 echo "Cloning wallet repo"
 git clone https://${GH_TOKEN}@github.com/decentral-exchange/wallet
 
@@ -15,8 +20,12 @@ git add .
 git commit -a -m "Travis #$TRAVIS_BUILD_NUMBER"
 git push --quiet origin master > /dev/null 2>&1 
 
+################################################
+
 echo "Uploading to IPFS"
-$GOPATH/bin/ipfs add -r . > ~/ipfs.log
+ipfs add -r . > ~/ipfs.log
+
+################################################
 
 echo "Cloning webpage repo"
 git clone https://${GH_TOKEN}@github.com/decentral-exchange/decentral-exchange.github.io
@@ -33,7 +42,6 @@ date: $(date)
 
 $(cat ~/ipfs.log)
 EOF
-
 cat $FILE
 
 echo "Updating github webpage repository"

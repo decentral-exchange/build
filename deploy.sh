@@ -1,22 +1,22 @@
-## Get wallet 
 echo "Cloning wallet repo"
 git clone https://${GH_TOKEN}@github.com/decentral-exchange/wallet
-cp -R bitshares-2-ui/web/dist/* wallet/
 
-## Update Wallet
+echo "Copying compiled files over to repo"
+cp -Rv bitshares-2-ui/web/dist/* wallet/
+
 echo "Pushing new wallet repo"
 cd wallet
+git status
 git config user.email "info@decentral.exchange"
 git config user.name "Decentral Exchange"
 git add -A .
 git commit -a -m "Travis #$TRAVIS_BUILD_NUMBER"
 git push --quiet origin master > /dev/null 2>&1 
 
-## Get webpage
 echo "Cloning webpage repo"
 git clone https://${GH_TOKEN}@github.com/decentral-exchange/decentral-exchange.github.io
 
-## Update webpage
+echo "Updating web page repo"
 cd decentral-exchange.github.io/
 hash=$(tail -n1 ~/ipfs.log | awk -F" " '{print $2}')
 FILE="_version/$(date +%s).md"

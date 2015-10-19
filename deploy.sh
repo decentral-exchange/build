@@ -19,7 +19,7 @@ git clone https://${GH_TOKEN}@github.com/decentral-exchange/decentral-exchange.g
 ## Update webpage
 cd decentral-exchange.github.io/
 hash=$(tail -n1 ~/ipfs.log | awk -F" " '{print $2}')
-FILE="$(date +%s).md"
+FILE="_version/$(date +%s).md"
 cat <<EOF > $FILE
 ---
 hash: $hash

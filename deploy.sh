@@ -24,6 +24,7 @@ git push --quiet origin master > /dev/null 2>&1
 
 echo "Uploading to IPFS"
 ipfs add -r . > ~/ipfs.log
+hash=$(tail -n1 ~/ipfs.log | awk -F" " '{print $2}')
 
 ################################################
 
@@ -31,8 +32,7 @@ echo "Cloning webpage repo"
 git clone https://${GH_TOKEN}@github.com/decentral-exchange/decentral-exchange.github.io
 
 echo "Updating web page repo"
-cd decentral-exchange.github.io/
-hash=$(tail -n1 ~/ipfs.log | awk -F" " '{print $2}')
+cd decentral-exchange.github.io
 FILE="_version/$(date +%s).md"
 cat <<EOF > $FILE
 ---

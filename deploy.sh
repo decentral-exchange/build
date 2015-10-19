@@ -2,6 +2,8 @@ echo "Cloning wallet repo"
 git clone https://${GH_TOKEN}@github.com/decentral-exchange/wallet
 
 echo "Copying compiled files over to repo"
+ls -al bitshares-2-ui/web/dist/
+ls -al wallet/
 cp -Rv bitshares-2-ui/web/dist/* wallet/
 
 echo "Pushing new wallet repo"
@@ -9,9 +11,12 @@ cd wallet
 git status
 git config user.email "info@decentral.exchange"
 git config user.name "Decentral Exchange"
-git add -A .
+git add .
 git commit -a -m "Travis #$TRAVIS_BUILD_NUMBER"
 git push --quiet origin master > /dev/null 2>&1 
+
+echo "Uploading to IPFS"
+$GOPATH/bin/ipfs add -r . > ~/ipfs.log
 
 echo "Cloning webpage repo"
 git clone https://${GH_TOKEN}@github.com/decentral-exchange/decentral-exchange.github.io

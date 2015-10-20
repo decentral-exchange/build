@@ -19,6 +19,7 @@ git config user.name "Decentral Exchange"
 git add .
 git commit -a -m "Travis #$TRAVIS_BUILD_NUMBER"
 git push --quiet origin master > /dev/null 2>&1 
+COMMIT=git log --oneline | head -n1 | awk -F" " '{print $1}'
 
 ################################################
 
@@ -38,6 +39,8 @@ cat <<EOF > $FILE
 ---
 hash: $hash
 date: $(date)
+build: $TRAVIS_BUILD_NUMBER
+commit: $COMMIT
 ---
 
 $(cat ~/ipfs.log)

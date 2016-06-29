@@ -1,3 +1,5 @@
+echo -e "machine github.com\n  login ci-user\n  password $CI_USER_PASSWORD" >> ~/.netrc
+
 export GOPATH=$HOME/gopath
 export PATH=$HOME/gopath/bin:$PATH
 

@@ -6,4 +6,8 @@ tar zxf go-ipfs_*.tar.gz
 export PATH=$PATH:$PWD/go-ipfs/
 
 ipfs init
-ipfs cat /ipfs/QmVtU7ths96fMgZ8YSZAbKghyieq7AjxNdcqyVzxTt3qVe/readme
+ipfs daemon --init &
+
+sleep 10
+
+ipfs cat /ipfs/QmVtU7ths96fMgZ8YSZAbKghyieq7AjxNdcqyVzxTt3qVe/readme 2>&1

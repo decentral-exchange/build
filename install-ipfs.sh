@@ -10,4 +10,4 @@ ipfs daemon --init &
 
 sleep 10
 
-ipfs cat /ipfs/QmVtU7ths96fMgZ8YSZAbKghyieq7AjxNdcqyVzxTt3qVe/readme 2>&1
+ipfs cat /ipfs/QmYwAPJzv5CZsnA625s3Xf2nemtYgPpHdWEz79ojWnPbdG/readme 2>&1
